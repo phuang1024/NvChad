@@ -31,10 +31,7 @@ require('nvim-cursorline').setup {
   }
 }
 
-require('dashboard').setup {
-  theme = "doom",
-}
-
+require('alpha').setup(require('alpha.themes.startify').config)
 
 -- copilot stuff
 vim.g.copilot_assume_mapped = true
