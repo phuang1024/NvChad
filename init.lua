@@ -1,3 +1,5 @@
+-- nvchad setup
+
 require "core"
 
 local custom_init_path = vim.api.nvim_get_runtime_file("lua/custom/init.lua", false)[1]
@@ -20,3 +22,14 @@ vim.opt.rtp:prepend(lazypath)
 require "plugins"
 
 dofile(vim.g.base46_cache .. "defaults")
+
+
+-- copilot stuff
+vim.g.copilot_assume_mapped = true
+
+-- keybindings
+local map = require("utils").map
+
+map("n", "<F12>", ":lua require('nvterm.terminal').toggle 'horizontal' <CR>")
+
+map("t", "<Esc>", "<C-\\><C-n>")
