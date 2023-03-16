@@ -24,6 +24,18 @@ require "plugins"
 dofile(vim.g.base46_cache .. "defaults")
 
 
+require('nvim-cursorline').setup {
+  cursorword = {
+    enable = true,
+    hl = {underline = true},
+  }
+}
+
+require('dashboard').setup {
+  theme = "doom",
+}
+
+
 -- copilot stuff
 vim.g.copilot_assume_mapped = true
 
@@ -31,5 +43,8 @@ vim.g.copilot_assume_mapped = true
 local map = require("utils").map
 
 map("n", "<F12>", ":lua require('nvterm.terminal').toggle 'horizontal' <CR>")
-
+map('n', '<leader>ff', ":lua require('telescope.builtin').find_files() <CR>")
+map('n', '<leader>fg', ":lua require('telescope.builtin').live_grep() <CR>")
+map('n', '<leader>fb', ":lua require('telescope.builtin').buffers() <CR>")
+map('n', '<leader>fh', ":lua require('telescope.builtin').help_tags() <CR>")
 map("t", "<Esc>", "<C-\\><C-n>")
