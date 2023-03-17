@@ -31,8 +31,6 @@ require('nvim-cursorline').setup {
   }
 }
 
-require('alpha').setup(require('alpha.themes.startify').config)
-
 -- copilot stuff
 vim.g.copilot_assume_mapped = true
 

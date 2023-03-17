@@ -59,7 +59,7 @@ local plugins = {
   },
 
   {
-    "goolord/alpha-nvim",
+    "mhinz/vim-startify",
     lazy = false,
   },
 
