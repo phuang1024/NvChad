@@ -23,7 +23,19 @@ require "plugins"
 
 dofile(vim.g.base46_cache .. "defaults")
 
--- cursorline
+
+-- My stuff
+
+-- nvim cmp
+local cmp = require'cmp'
+cmp.setup({
+  mapping = cmp.mapping.preset.insert({
+    ['<Tab>'] = cmp.mapping.confirm({select = true}),
+    ['<CR>'] = cmp.mapping.abort(),
+  })
+})
+
+-- nvim-cursorline
 require('nvim-cursorline').setup {
   cursorword = {
     enable = true,
