@@ -23,7 +23,7 @@ require "plugins"
 
 dofile(vim.g.base46_cache .. "defaults")
 
-
+-- cursorline
 require('nvim-cursorline').setup {
   cursorword = {
     enable = true,
@@ -31,12 +31,17 @@ require('nvim-cursorline').setup {
   }
 }
 
+-- startify bookmarks
+vim.g.startify_bookmarks = {
+  "~/.config/nvim/init.lua",
+  "~/Work/Personal/RunLog.txt",
+}
+
 -- copilot stuff
 vim.g.copilot_assume_mapped = true
 
 -- keybindings
 local map = require("utils").map
-
 map("n", "<F12>", ":lua require('nvterm.terminal').toggle 'horizontal' <CR>")
 map('n', '<leader>ff', ":lua require('telescope.builtin').find_files() <CR>")
 map('n', '<leader>fg', ":lua require('telescope.builtin').live_grep() <CR>")
