@@ -62,3 +62,7 @@ map('n', '<leader>fh', ":lua require('telescope.builtin').help_tags() <CR>")
 map("n", "<C-J>", "<C-E>")
 map("n", "<C-K>", "<C-Y>")
 map("t", "<Esc>", "<C-\\><C-n>")
+
+-- set tab to 4
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
