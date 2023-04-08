@@ -11,6 +11,7 @@ M.override = {
   },
   Comment = {
     italic = true,
+    fg = "#969696",
   },
 }
 
