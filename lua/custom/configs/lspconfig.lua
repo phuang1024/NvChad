@@ -76,6 +76,27 @@ require("mason-lspconfig").setup_handlers {
       },
     }
   end,
+  ["clangd"] = function()
+    lspconfig["clangd"].setup {
+      on_attach = on_attach,
+      capabilities = capabilities,
+      cmd = {
+        "clangd",
+        "--background-index",
+        "--clang-tidy",
+        "--completion-style=bundled",
+        "--header-insertion=never",
+        "-std=c++17",
+      },
+      filetypes = { "c", "cpp", "objc", "objcpp", "h", "hpp", "cu", "cuh" },
+      init_options = {
+        clangdFileStatus = true,
+        usePlaceholders = true,
+        completeUnimported = true,
+        semanticHighlighting = true,
+      },
+    }
+  end,
   -- Example: disable auto configuring an LSP
   -- ["clangd"] = function() end,
 }
