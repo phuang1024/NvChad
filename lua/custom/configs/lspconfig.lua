@@ -1,6 +1,9 @@
 local on_attach = require("plugins.configs.lspconfig").on_attach
 local capabilities = require("plugins.configs.lspconfig").capabilities
 
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+capabilities.offsetEncoding = "utf-8"
+
 local lspconfig = require "lspconfig"
 
 -- List of servers to install
@@ -76,27 +79,28 @@ require("mason-lspconfig").setup_handlers {
       },
     }
   end,
-  -- ["clangd"] = function()
-  --   lspconfig["clangd"].setup {
-  --     on_attach = on_attach,
-  --     capabilities = capabilities,
-  --     cmd = {
-  --       "clangd",
-  --       "--background-index",
-  --       -- "--clang-tidy",
-  --       -- "--completion-style=bundled",
-  --       -- "--header-insertion=never",
-  --       "-std=c++17",
-  --     },
-  --     -- filetypes = { "c", "cpp", "objc", "objcpp", "h", "hpp", "cu", "cuh" },
-  --     -- init_options = {
-  --     --   clangdFileStatus = true,
-  --     --   usePlaceholders = true,
-  --     --   completeUnimported = true,
-  --     --   semanticHighlighting = true,
-  --     -- },
-  --   }
-  -- end,
+  ["clangd"] = function()
+    lspconfig["clangd"].setup {
+      on_attach = on_attach,
+      capabilities = capabilities,
+      cmd = {
+        "clangd",
+        "--background-index",
+        "--clang-tidy",
+        "--completion-style=detailed",
+        "--header-insertion=never",
+        "--cross-file-rename",
+        "--enable-config",
+      },
+      filetypes = { "c", "cpp", "objc", "objcpp", "h", "hpp", "cu", "cuh" },
+      init_options = {
+        clangdFileStatus = true,
+        usePlaceholders = true,
+        completeUnimported = true,
+        semanticHighlighting = true,
+      },
+    }
+  end,
   -- Example: disable auto configuring an LSP
   -- ["clangd"] = function() end,
 }
