@@ -54,14 +54,23 @@ vim.g.copilot_assume_mapped = true
 
 -- keybindings
 local map = require("utils").map
+-- terminal
 map("n", "<F12>", ":lua require('nvterm.terminal').toggle 'horizontal' <CR>")
+-- telescope
 map('n', '<leader>ff', ":lua require('telescope.builtin').find_files() <CR>")
 map('n', '<leader>fg', ":lua require('telescope.builtin').live_grep() <CR>")
 map('n', '<leader>fb', ":lua require('telescope.builtin').buffers() <CR>")
 map('n', '<leader>fh', ":lua require('telescope.builtin').help_tags() <CR>")
+-- scroll up/down
 map("n", "<C-J>", "<C-E>")
 map("n", "<C-K>", "<C-Y>")
+-- better esc
 map("t", "<Esc>", "<C-\\><C-n>")
+-- resize windows
+map("n", "<M-S-J>", "<C-W>-")
+map("n", "<M-S-K>", "<C-W>+")
+map("n", "<M-S-H>", "<C-W><")
+map("n", "<M-S-L>", "<C-W>>")
 
 -- set tab to 4
 vim.opt.tabstop = 4
